@@ -1,7 +1,7 @@
 :root {
   /* Шрифт */
-  --main-font: 'Roboto', sans-serif;
-  --secondary-font: 'Raleway', sans-serif;
+  --main-font: "Roboto", sans-serif;
+  --secondary-font: "Raleway", sans-serif;
   /* Цвет текста  */
   --primary-text-color: #212121;
   --secondary-text-color: #757575;
@@ -13,6 +13,8 @@
   --title-bc-color: #f5f4fa;
   /* Цвет Значка */
   --primary-icon-color: #afb1b8;
+  /* Анимация */
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -83,6 +85,21 @@ p {
   align-items: center;
 }
 /* link */
+.link {
+  position: relative;
+}
+.link-first::after {
+  content: "";
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
 .site-nav {
   display: flex;
   font-weight: 500;
@@ -146,8 +163,12 @@ p {
   text-align: center;
   padding-top: 200px;
   padding-bottom: 200px;
-  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-    url('../images/icon/hero.svg');
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url("../images/icon/hero.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -453,6 +474,19 @@ img {
 .hidden {
   display: none;
 }
+
+.link-secondary::after {
+  content: "";
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
 /* Кнопки */
 .button {
   margin-bottom: 50px;
@@ -537,4 +571,55 @@ img {
   font-size: 16px;
   line-height: 1.8;
   letter-spacing: 0.03em;
+}
+
+/* Модальное окно */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 5250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  padding: 15px;
+  width: 581px;
+  height: 528px;
+
+  background-color: var(--title-bc-color);
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 5250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-image: url(../images/Vector.svg);
+  background-color: var(--title-bc-color);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
