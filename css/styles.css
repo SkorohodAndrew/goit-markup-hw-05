@@ -206,6 +206,7 @@ p {
   line-height: 1.87;
   letter-spacing: 0.06em;
   cursor: pointer;
+  border-radius: 4px
 }
 
 /* Контент */
@@ -696,15 +697,15 @@ text-transform: uppercase;
 }
 .modal-close {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 8px;
   right: 8px;
   width: 30px;
   height: 30px;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-image: url(../images/icon/Close.svg);
   background-color: var(--title-bc-color);
   border-radius: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
 }
